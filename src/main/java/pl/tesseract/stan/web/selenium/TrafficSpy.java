@@ -47,31 +47,29 @@ public class TrafficSpy {
         System.out.println("Port started:" + port);
     }
 
-    public void spyOn(String siteUrl, String requestUrl) throws InterruptedException, IOException {
+    public HarResponse spyOn(String siteUrl, String requestUrl) throws InterruptedException, IOException {
         server.newHar("test.har");
         driver.get(siteUrl);
         driver.manage().window().maximize();
         Thread.sleep(15000);
-        captureTrafficData(requestUrl);
+        return captureTrafficData(requestUrl);
     }
 
-    private void captureTrafficData(String urlFilter) throws IOException {
+    private HarResponse captureTrafficData(String urlFilter) throws IOException {
         Har har = server.getHar();
+        driver.quit();
+        server.stop();
         for (HarEntry entry : har.getLog().getEntries()) {
             if (entry.getResponse() != null ) {
-
                 HarResponse response = entry.getResponse();
                 String responseUrl = entry.getRequest().getUrl();
                 if(responseUrl.contains(urlFilter) && response.getContent().getText()!= null){
-                    System.out.println(responseUrl);
-                    BBGraphResponse jsonResponse = new ObjectMapper().readValue(response.getContent().getText(), BBGraphResponse.class);
-                    System.out.println(jsonResponse.getStatus());
+                    return response;
                 }
             }
 
         }
-        driver.quit();
-        server.stop();
+        return null;
     }
 
 }
