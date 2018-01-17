@@ -1,6 +1,5 @@
 package pl.tesseract.stan.web.selenium;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import net.lightbody.bmp.BrowserMobProxyServer;
 import net.lightbody.bmp.client.ClientUtil;
 import net.lightbody.bmp.core.har.Har;
@@ -15,7 +14,6 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
-import pl.tesseract.stan.model.bitbay.BBGraphResponse;
 
 import javax.annotation.PostConstruct;
 import java.io.File;

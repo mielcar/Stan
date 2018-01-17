@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import net.lightbody.bmp.core.har.HarResponse;
 import org.springframework.stereotype.Component;
 import pl.tesseract.stan.model.StockGraph;
-import pl.tesseract.stan.model.StockGraphPoint;
 import pl.tesseract.stan.model.bitbay.BBGraphItem;
 import pl.tesseract.stan.model.bitbay.BBGraphPoint;
 import pl.tesseract.stan.model.bitbay.BBGraphResponse;
@@ -21,6 +20,7 @@ public class BBHarResponseMapper {
 
     public static StockGraph map(HarResponse response) {
         StockGraph stockGraph = new StockGraph();
+        if (response == null || response.getContent() == null) return stockGraph;
         try {
             BBGraphResponse bbGraphResponse = new ObjectMapper().readValue(response.getContent().getText(), BBGraphResponse.class);
             bbGraphResponse.getItems().forEach(items -> {
