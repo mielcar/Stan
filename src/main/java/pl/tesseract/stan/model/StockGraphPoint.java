@@ -9,8 +9,10 @@ import java.time.LocalDateTime;
  */
 @Data
 public class StockGraphPoint {
-
-    private Double price;
-
-    private LocalDateTime date;
+   private Double open;
+   private Double close;
+   private Double high;
+   private Double low;
+   private Double volume;
+   private LocalDateTime date;
 }

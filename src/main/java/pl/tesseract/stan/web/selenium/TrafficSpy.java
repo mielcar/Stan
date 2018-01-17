@@ -56,20 +56,20 @@ public class TrafficSpy {
     }
 
     private HarResponse captureTrafficData(String urlFilter) throws IOException {
+        HarResponse response = null;
         Har har = server.getHar();
         driver.quit();
         server.stop();
         for (HarEntry entry : har.getLog().getEntries()) {
             if (entry.getResponse() != null ) {
-                HarResponse response = entry.getResponse();
                 String responseUrl = entry.getRequest().getUrl();
-                if(responseUrl.contains(urlFilter) && response.getContent().getText()!= null){
-                    return response;
+                if(responseUrl.contains(urlFilter) && entry.getResponse().getContent().getText()!= null){
+                    response = entry.getResponse();
                 }
             }
 
         }
-        return null;
+        return response;
     }
 
 }

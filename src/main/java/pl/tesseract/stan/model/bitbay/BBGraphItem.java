@@ -9,6 +9,6 @@ import java.time.LocalDateTime;
  */
 @Data
 public class BBGraphItem {
-    LocalDateTime time;
+    LocalDateTime date;
     BBGraphPoint point;
 }

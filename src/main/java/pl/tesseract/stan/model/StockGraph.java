@@ -3,6 +3,7 @@ package pl.tesseract.stan.model;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,5 +20,5 @@ public class StockGraph {
 
     private Double maxPrice;
 
-    private List<StockGraphPoint> points;
+    private List<StockGraphPoint> points = new ArrayList<>();
 }
