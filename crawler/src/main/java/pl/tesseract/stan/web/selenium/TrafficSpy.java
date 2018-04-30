@@ -9,6 +9,7 @@ import net.lightbody.bmp.proxy.CaptureType;
 import org.openqa.selenium.Proxy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,7 +50,7 @@ public class TrafficSpy {
         server.newHar("test.har");
         driver.get(siteUrl);
         driver.manage().window().maximize();
-        Thread.sleep(15000);
+        Thread.sleep(7000);
         return captureTrafficData(requestUrl);
     }
 

@@ -2,6 +2,7 @@ package pl.tesseract.stan.model;
 
 import lombok.Data;
 
+import javax.persistence.Embeddable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
